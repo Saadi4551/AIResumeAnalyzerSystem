@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AIResumeAnalyzerSystem.API", "AIResumeAnalyzerSystem.API\AIResumeAnalyzerSystem.API.csproj", "{9F8E49AE-46B1-4890-863B-D5D3C9D860D3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AIResumeAnalyzerSystem.Core", "AIResumeAnalyzerSystem.Core\AIResumeAnalyzerSystem.Core.csproj", "{0A6811A3-08AA-4C5C-AA1E-4CEBE6A75A0F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AIResumeAnalyzerSystem.Infrastructure", "AIResumeAnalyzerSystem.Infrastructure\AIResumeAnalyzerSystem.Infrastructure.csproj", "{FD85323A-0669-44B5-AF28-A5DB75406085}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9F8E49AE-46B1-4890-863B-D5D3C9D860D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F8E49AE-46B1-4890-863B-D5D3C9D860D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F8E49AE-46B1-4890-863B-D5D3C9D860D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F8E49AE-46B1-4890-863B-D5D3C9D860D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A6811A3-08AA-4C5C-AA1E-4CEBE6A75A0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A6811A3-08AA-4C5C-AA1E-4CEBE6A75A0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A6811A3-08AA-4C5C-AA1E-4CEBE6A75A0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A6811A3-08AA-4C5C-AA1E-4CEBE6A75A0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD85323A-0669-44B5-AF28-A5DB75406085}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD85323A-0669-44B5-AF28-A5DB75406085}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD85323A-0669-44B5-AF28-A5DB75406085}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD85323A-0669-44B5-AF28-A5DB75406085}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
