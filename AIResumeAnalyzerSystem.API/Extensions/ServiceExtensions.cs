@@ -4,6 +4,7 @@ using AIResumeAnalyzerSystem.Infrastructure.Data;
 using AIResumeAnalyzerSystem.Infrastructure.Repositories;
 using AIResumeAnalyzerSystem.Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
+using Npgsql.EntityFrameworkCore.PostgreSQL;
 
 namespace AIResumeAnalyzerSystem.API.Extensions;
 
@@ -15,7 +16,7 @@ public static class ServiceExtensions
     {
         // Database
         services.AddDbContext<AppDbContext>(options =>
-            options.UseSqlServer(
+            options.UseNpgsql(
                 configuration.GetConnectionString("DefaultConnection"),
                 x => x.MigrationsAssembly("AIResumeAnalyzerSystem.Infrastructure")));
 

@@ -9,8 +9,8 @@ public class AppDbContextFactory : IDesignTimeDbContextFactory<AppDbContext>
     {
         var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
         
-        optionsBuilder.UseSqlServer(
-            "Server=THINKPAD-T470S;Database=AIResumalyzerDB;Trusted_Connection=True;TrustServerCertificate=True",
+        optionsBuilder.UseNpgsql(
+            "Host=ep-wispy-voice-aqkkwatw-pooler.c-8.us-east-1.aws.neon.tech;Database=neondb;Username=neondb_owner;Password=npg_4ySclxhM3XYs;SSL Mode=Require;Trust Server Certificate=true",
             x => x.MigrationsAssembly("AIResumeAnalyzerSystem.Infrastructure"));
 
         return new AppDbContext(optionsBuilder.Options);

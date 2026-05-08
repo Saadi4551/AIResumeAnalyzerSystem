@@ -5,6 +5,7 @@ Q:\Programming Courses and Training\Code\AIResumeAnalyzerSystem\AIResumeAnalyzer
 Q:\Programming Courses and Training\Code\AIResumeAnalyzerSystem\AIResumeAnalyzerSystem.Core\obj\Debug\net8.0\AIResumeAnalyzerSystem.Core.AssemblyInfoInputs.cache
 Q:\Programming Courses and Training\Code\AIResumeAnalyzerSystem\AIResumeAnalyzerSystem.Core\obj\Debug\net8.0\AIResumeAnalyzerSystem.Core.AssemblyInfo.cs
 Q:\Programming Courses and Training\Code\AIResumeAnalyzerSystem\AIResumeAnalyzerSystem.Core\obj\Debug\net8.0\AIResumeAnalyzerSystem.Core.csproj.CoreCompileInputs.cache
+Q:\Programming Courses and Training\Code\AIResumeAnalyzerSystem\AIResumeAnalyzerSystem.Core\obj\Debug\net8.0\AIResumeAnalyzerSystem.Core.sourcelink.json
 Q:\Programming Courses and Training\Code\AIResumeAnalyzerSystem\AIResumeAnalyzerSystem.Core\obj\Debug\net8.0\AIResumeAnalyzerSystem.Core.dll
 Q:\Programming Courses and Training\Code\AIResumeAnalyzerSystem\AIResumeAnalyzerSystem.Core\obj\Debug\net8.0\refint\AIResumeAnalyzerSystem.Core.dll
 Q:\Programming Courses and Training\Code\AIResumeAnalyzerSystem\AIResumeAnalyzerSystem.Core\obj\Debug\net8.0\AIResumeAnalyzerSystem.Core.pdb

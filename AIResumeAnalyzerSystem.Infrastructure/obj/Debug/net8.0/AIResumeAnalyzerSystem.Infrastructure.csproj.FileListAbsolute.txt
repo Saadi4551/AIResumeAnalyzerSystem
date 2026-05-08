@@ -9,6 +9,7 @@ Q:\Programming Courses and Training\Code\AIResumeAnalyzerSystem\AIResumeAnalyzer
 Q:\Programming Courses and Training\Code\AIResumeAnalyzerSystem\AIResumeAnalyzerSystem.Infrastructure\obj\Debug\net8.0\AIResumeAnalyzerSystem.Infrastructure.AssemblyInfoInputs.cache
 Q:\Programming Courses and Training\Code\AIResumeAnalyzerSystem\AIResumeAnalyzerSystem.Infrastructure\obj\Debug\net8.0\AIResumeAnalyzerSystem.Infrastructure.AssemblyInfo.cs
 Q:\Programming Courses and Training\Code\AIResumeAnalyzerSystem\AIResumeAnalyzerSystem.Infrastructure\obj\Debug\net8.0\AIResumeAnalyzerSystem.Infrastructure.csproj.CoreCompileInputs.cache
+Q:\Programming Courses and Training\Code\AIResumeAnalyzerSystem\AIResumeAnalyzerSystem.Infrastructure\obj\Debug\net8.0\AIResumeAnalyzerSystem.Infrastructure.sourcelink.json
 Q:\Programming Courses and Training\Code\AIResumeAnalyzerSystem\AIResumeAnalyzerSystem.Infrastructure\obj\Debug\net8.0\AIResume.C8A3D4AD.Up2Date
 Q:\Programming Courses and Training\Code\AIResumeAnalyzerSystem\AIResumeAnalyzerSystem.Infrastructure\obj\Debug\net8.0\AIResumeAnalyzerSystem.Infrastructure.dll
 Q:\Programming Courses and Training\Code\AIResumeAnalyzerSystem\AIResumeAnalyzerSystem.Infrastructure\obj\Debug\net8.0\refint\AIResumeAnalyzerSystem.Infrastructure.dll
