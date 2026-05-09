@@ -108,6 +108,25 @@ public class ResumeService : IResumeService
 
     public async Task DeleteResumeAsync(int id)
     {
+        // ✅ Get resume first to find userId
+        var resume = await _resumeRepository.GetByIdAsync(id)
+                     ?? throw new KeyNotFoundException("Resume not found.");
+
+        // ✅ Only decrease count if resume was analyzed
+        if (resume.Status == "Analyzed")
+        {
+            var user = await _userRepository.GetByIdAsync(resume.UserId)
+                       ?? throw new KeyNotFoundException("User not found.");
+
+            // ✅ Decrease count but never below 0
+            if (user.AnalysisCount > 0)
+            {
+                user.AnalysisCount--;
+                await _userRepository.UpdateAsync(user);
+            }
+        }
+
+        // ✅ Delete resume
         await _resumeRepository.DeleteAsync(id);
     }
 
