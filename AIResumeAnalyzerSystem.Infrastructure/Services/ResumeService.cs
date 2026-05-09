@@ -12,11 +12,13 @@ namespace AIResumeAnalyzerSystem.Infrastructure.Services;
 public class ResumeService : IResumeService
 {
     private readonly IResumeRepository _resumeRepository;
+    private readonly IUserRepository _userRepository;
     private readonly GeminiService _geminiService;
 
-    public ResumeService(IResumeRepository resumeRepository, GeminiService geminiService)
+    public ResumeService(IResumeRepository resumeRepository, IUserRepository userRepository, GeminiService geminiService)
     {
         _resumeRepository = resumeRepository;
+        _userRepository = userRepository;
         _geminiService = geminiService;
     }
 
@@ -48,31 +50,39 @@ public class ResumeService : IResumeService
         return resumes.Select(MapToDto);
     }
 
-    public async Task<ResumeResponseDto> AnalyzeResumeAsync(int resumeId)
+    public async Task<ResumeResponseDto> AnalyzeResumeAsync(int resumeId, int userId)
     {
+        // ✅ Step 1: Get User and Check Limit
+        var user = await _userRepository.GetByIdAsync(userId)
+            ?? throw new KeyNotFoundException("User not found.");
+
+        if (user.AnalysisCount >= 3)
+            throw new Exception("Analysis limit reached! You can only analyze 3 resumes.");
+
+        // ✅ Step 2: Get Resume
         var resume = await _resumeRepository.GetByIdAsync(resumeId)
             ?? throw new KeyNotFoundException("Resume not found.");
 
         if (!File.Exists(resume.FilePath))
             throw new FileNotFoundException("Resume file not found.");
 
-        // ✅ Step 1: Extract text from PDF
+        // ✅ Step 3: Extract text from PDF
         var resumeText = ExtractTextFromPdf(resume.FilePath);
 
         if (string.IsNullOrWhiteSpace(resumeText))
             throw new Exception("Failed to extract text from resume.");
 
-        // ✅ Step 2: Send to Gemini AI
+        // ✅ Step 4: Send to Gemini AI
         var aiResponse = await _geminiService.AnalyzeResumeTextAsync(resumeText);
 
-        // ✅ Step 3: Clean JSON (important)
+        // ✅ Step 5: Clean JSON
         aiResponse = CleanJson(aiResponse);
 
-        // ✅ Step 4: Deserialize
+        // ✅ Step 6: Deserialize
         var aiData = JsonSerializer.Deserialize<GeminiResponseDto>(aiResponse)
             ?? throw new Exception("Invalid AI response format.");
 
-        // ✅ Step 5: Save Analysis
+        // ✅ Step 7: Save Analysis
         var analysis = new ResumeAnalysis
         {
             ResumeId = resumeId,
@@ -87,9 +97,13 @@ public class ResumeService : IResumeService
 
         await _resumeRepository.SaveAnalysisAsync(analysis);
 
-        // ✅ Step 6: Update status
+        // ✅ Step 8: Update Resume Status
         resume.Status = "Analyzed";
         await _resumeRepository.UpdateAsync(resume);
+
+        // ✅ Step 9: Increment Analysis Count
+        user.AnalysisCount++;
+        await _userRepository.UpdateAsync(user);
 
         return MapToDto(resume);
     }

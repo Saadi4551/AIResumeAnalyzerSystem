@@ -55,11 +55,11 @@ public class ResumeController : ControllerBase
         var result = await _resumeService.GetResumesByUserIdAsync(userId);
         return Ok(ApiResponse<IEnumerable<ResumeResponseDto>>.Ok(result));
     }
-
     [HttpPost("analyze/{id}")]
     public async Task<IActionResult> Analyze(int id)
     {
-        var result = await _resumeService.AnalyzeResumeAsync(id);
+        var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
+        var result = await _resumeService.AnalyzeResumeAsync(id, userId);
         return Ok(ApiResponse<ResumeResponseDto>.Ok(result, "Resume analyzed successfully."));
     }
 

@@ -8,5 +8,7 @@ public class User : BaseEntity
     public string Role { get; set; } = "User";
 
     // Navigation Property
+    
+    public int AnalysisCount { get; set; } = 0;
     public ICollection<Resume> Resumes { get; set; } = new List<Resume>();
 }
