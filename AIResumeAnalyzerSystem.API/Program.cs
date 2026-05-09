@@ -1,9 +1,10 @@
 using AIResumeAnalyzerSystem.API.Extensions;
 using AIResumeAnalyzerSystem.API.Middlewares;
 using AIResumeAnalyzerSystem.Core.Interfaces.Services;
-using Microsoft.OpenApi.Models;
+using AIResumeAnalyzerSystem.Infrastructure.Data;
 using AIResumeAnalyzerSystem.Infrastructure.Services;
-
+using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -47,9 +48,7 @@ builder.Services.AddApplicationServices(builder.Configuration);
 builder.Services.AddJwtAuthentication(builder.Configuration);
 builder.Services.AddCorsPolicy();
 builder.Services.AddScoped<IResumeService, ResumeService>();
-
 builder.Services.AddHttpClient<GeminiService>();
-
 
 var app = builder.Build();
 
@@ -60,6 +59,13 @@ app.UseSwaggerUI(c =>
 {
     c.SwaggerEndpoint("/swagger/v1/swagger.json", "AI Resume Analyzer API v1");
 });
+
+// ✅ Auto-apply migrations on startup
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    db.Database.Migrate();
+}
 
 //app.UseHttpsRedirection();
 app.UseCors("AllowAll");
