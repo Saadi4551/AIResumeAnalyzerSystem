@@ -9,4 +9,6 @@ public interface IResumeService
     Task<IEnumerable<ResumeResponseDto>> GetResumesByUserIdAsync(int userId);
     Task<ResumeResponseDto> AnalyzeResumeAsync(int resumeId, int  userId);
     Task DeleteResumeAsync(int id);
+    
+    Task<int> GetRemainingAnalysesAsync(int userId);
 }

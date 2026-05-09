@@ -9,7 +9,7 @@ using AIResumeAnalyzerSystem.Infrastructure.Services;
 
 namespace AIResumeAnalyzerSystem.Infrastructure.Services;
 
-public class ResumeService : IResumeService
+public class ResumeService : IResumeService     
 {
     private readonly IResumeRepository _resumeRepository;
     private readonly IUserRepository _userRepository;
@@ -52,21 +52,19 @@ public class ResumeService : IResumeService
 
     public async Task<ResumeResponseDto> AnalyzeResumeAsync(int resumeId, int userId)
     {
-        // ✅ Step 1: Get User and Check Limit
+        
         var user = await _userRepository.GetByIdAsync(userId)
             ?? throw new KeyNotFoundException("User not found.");
 
         if (user.AnalysisCount >= 3)
             throw new Exception("Analysis limit reached! You can only analyze 3 resumes.");
-
-        // ✅ Step 2: Get Resume
+        
         var resume = await _resumeRepository.GetByIdAsync(resumeId)
             ?? throw new KeyNotFoundException("Resume not found.");
 
         if (!File.Exists(resume.FilePath))
             throw new FileNotFoundException("Resume file not found.");
-
-        // ✅ Step 3: Extract text from PDF
+        
         var resumeText = ExtractTextFromPdf(resume.FilePath);
 
         if (string.IsNullOrWhiteSpace(resumeText))
@@ -159,5 +157,15 @@ public class ResumeService : IResumeService
             JobTitleSuggestions = JsonSerializer.Deserialize<List<string>>(resume.Analysis.JobTitleSuggestions ?? "[]") ?? new(),
             AIFeedback = resume.Analysis.AIFeedback
         }
+        
+        
     };
+    
+    public async Task<int> GetRemainingAnalysesAsync(int userId)
+    {
+        var user = await _userRepository.GetByIdAsync(userId)
+                   ?? throw new KeyNotFoundException("User not found.");
+    
+        return Math.Max(0, 3 - user.AnalysisCount);
+    }
 }

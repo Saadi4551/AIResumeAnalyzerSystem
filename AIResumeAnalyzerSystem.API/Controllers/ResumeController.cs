@@ -59,8 +59,31 @@ public class ResumeController : ControllerBase
     public async Task<IActionResult> Analyze(int id)
     {
         var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
+    
+        // Check limit first
+        var remainingAnalyses = await _resumeService.GetRemainingAnalysesAsync(userId);
+    
+        if (remainingAnalyses <= 0)
+        {
+            return StatusCode(429, new
+            {
+                Success = false,
+                StatusCode = 429,
+                Message = "Analysis limit reached! You have used all 3 free analyses.",
+                RemainingAnalyses = 0
+            });
+        }
+    
         var result = await _resumeService.AnalyzeResumeAsync(id, userId);
-        return Ok(ApiResponse<ResumeResponseDto>.Ok(result, "Resume analyzed successfully."));
+    
+        return Ok(new
+        {
+            Success = true,
+            StatusCode = 200,
+            Message = "Resume analyzed successfully.",
+            RemainingAnalyses = remainingAnalyses - 1,
+            Data = result
+        });
     }
 
     [HttpDelete("{id}")]
