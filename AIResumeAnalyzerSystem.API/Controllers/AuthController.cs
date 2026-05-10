@@ -19,18 +19,16 @@ public class AuthController : ControllerBase
     [HttpPost("register")]
     public async Task<IActionResult> Register([FromBody] RegisterDto dto)
     {
-        var result = await _authService.RegisterAsync(dto);
-        SetTokenCookie(result.Token);
-        result.Token = null;
+        var (result, token) = await _authService.RegisterAsync(dto);
+        SetTokenCookie(token);
         return Ok(ApiResponse<AuthResponseDto>.Ok(result, "Registered successfully."));
     }
 
     [HttpPost("login")]
     public async Task<IActionResult> Login([FromBody] LoginDto dto)
     {
-        var result = await _authService.LoginAsync(dto);
-        SetTokenCookie(result.Token);
-        result.Token = null;
+        var (result, token) = await _authService.LoginAsync(dto);
+        SetTokenCookie(token);
         return Ok(ApiResponse<AuthResponseDto>.Ok(result, "Login successful."));
     }
 

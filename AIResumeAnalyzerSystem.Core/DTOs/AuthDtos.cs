@@ -15,7 +15,7 @@ public class LoginDto
 
 public class AuthResponseDto
 {
-    public string? Token { get; set; } // ✅ Nullable - won't be sent in response
+    
     public string FullName { get; set; } = string.Empty;
     public string Email { get; set; } = string.Empty;
     public string Role { get; set; } = string.Empty;

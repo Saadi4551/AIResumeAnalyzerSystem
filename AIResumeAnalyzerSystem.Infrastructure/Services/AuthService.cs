@@ -21,9 +21,8 @@ public class AuthService : IAuthService
         _configuration = configuration;
     }
 
-    public async Task<AuthResponseDto> RegisterAsync(RegisterDto dto)
+    public async Task<(AuthResponseDto user, string token)> RegisterAsync(RegisterDto dto)
     {
-        // Check if email already exists
         if (await _userRepository.ExistsAsync(dto.Email))
             throw new ArgumentException("Email already registered.");
 
@@ -37,16 +36,18 @@ public class AuthService : IAuthService
 
         await _userRepository.CreateAsync(user);
 
-        return new AuthResponseDto
+        var token = GenerateJwtToken(user);
+        var response = new AuthResponseDto
         {
-            Token = GenerateJwtToken(user),
             FullName = user.FullName,
             Email = user.Email,
             Role = user.Role
         };
+
+        return (response, token);
     }
 
-    public async Task<AuthResponseDto> LoginAsync(LoginDto dto)
+    public async Task<(AuthResponseDto user, string token)> LoginAsync(LoginDto dto)
     {
         var user = await _userRepository.GetByEmailAsync(dto.Email)
             ?? throw new UnauthorizedAccessException("Invalid email or password.");
@@ -54,13 +55,15 @@ public class AuthService : IAuthService
         if (!BCrypt.Net.BCrypt.Verify(dto.Password, user.PasswordHash))
             throw new UnauthorizedAccessException("Invalid email or password.");
 
-        return new AuthResponseDto
+        var token = GenerateJwtToken(user);
+        var response = new AuthResponseDto
         {
-            Token = GenerateJwtToken(user),
             FullName = user.FullName,
             Email = user.Email,
             Role = user.Role
         };
+
+        return (response, token);
     }
 
     private string GenerateJwtToken(User user)
