@@ -6,4 +6,6 @@ public interface IAuthService
 {
     Task<(AuthResponseDto user, string token)> RegisterAsync(RegisterDto dto);
     Task<(AuthResponseDto user, string token)> LoginAsync(LoginDto dto);
+    
+    Task<AuthResponseDto> GetCurrentUserAsync(int userId);
 }

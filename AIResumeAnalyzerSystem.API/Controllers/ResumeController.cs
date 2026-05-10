@@ -112,3 +112,4 @@ public class ResumeController : ControllerBase
         return Ok(ApiResponse<string>.Ok("Deleted", "Resume deleted successfully."));
     }
 }
+

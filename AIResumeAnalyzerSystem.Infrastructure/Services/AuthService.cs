@@ -90,4 +90,18 @@ public class AuthService : IAuthService
 
         return new JwtSecurityTokenHandler().WriteToken(token);
     }
+    // ✅ Returns current logged-in user info from database
+// Called by GET /api/Auth/me endpoint
+    public async Task<AuthResponseDto> GetCurrentUserAsync(int userId)
+    {
+        var user = await _userRepository.GetByIdAsync(userId)
+                   ?? throw new KeyNotFoundException("User not found.");
+
+        return new AuthResponseDto
+        {
+            FullName = user.FullName,
+            Email = user.Email,
+            Role = user.Role
+        };
+    }
 }
