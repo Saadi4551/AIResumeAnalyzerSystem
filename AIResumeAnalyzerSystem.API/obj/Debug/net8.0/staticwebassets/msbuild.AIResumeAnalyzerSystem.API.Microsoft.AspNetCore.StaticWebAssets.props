@@ -112,6 +112,22 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\2cf156cd-5eeb-40a9-8aac-16d5e3c623cd_resume_for_AI_checker.pdf))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\2dd902a1-b581-4ea5-82cd-e63d44b5d50a_Saad-Akhtar-Qadri-FlowCV-Resume-20251014 (1) (5).pdf))">
+      <SourceType>Package</SourceType>
+      <SourceId>AIResumeAnalyzerSystem.API</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/AIResumeAnalyzerSystem.API</BasePath>
+      <RelativePath>uploads/2dd902a1-b581-4ea5-82cd-e63d44b5d50a_Saad-Akhtar-Qadri-FlowCV-Resume-20251014 (1) (5).pdf</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\2dd902a1-b581-4ea5-82cd-e63d44b5d50a_Saad-Akhtar-Qadri-FlowCV-Resume-20251014 (1) (5).pdf))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\2e6a726f-f2df-4149-9dd8-b9837795e373_Saad_Akhtar_Qadri_FlowCV_Resume_2026-04-14.pdf))">
       <SourceType>Package</SourceType>
       <SourceId>AIResumeAnalyzerSystem.API</SourceId>

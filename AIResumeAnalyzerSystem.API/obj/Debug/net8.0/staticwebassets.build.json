@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "NxhUSPUL9y7t2ZuDqlxvT8rJ+r1Q9A5qxreITXR+xIQ=",
+  "Hash": "5GyE9J9Y+x1sLL3lOUtBgzJaWhf4OqtSvwqEpth8+2o=",
   "Source": "AIResumeAnalyzerSystem.API",
   "BasePath": "_content/AIResumeAnalyzerSystem.API",
   "Mode": "Default",
@@ -148,6 +148,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\2cf156cd-5eeb-40a9-8aac-16d5e3c623cd_resume_for_AI_checker.pdf"
+    },
+    {
+      "Identity": "Q:\\Programming Courses and Training\\Code\\AIResumeAnalyzerSystem\\AIResumeAnalyzerSystem.API\\wwwroot\\uploads\\2dd902a1-b581-4ea5-82cd-e63d44b5d50a_Saad-Akhtar-Qadri-FlowCV-Resume-20251014 (1) (5).pdf",
+      "SourceId": "AIResumeAnalyzerSystem.API",
+      "SourceType": "Discovered",
+      "ContentRoot": "Q:\\Programming Courses and Training\\Code\\AIResumeAnalyzerSystem\\AIResumeAnalyzerSystem.API\\wwwroot\\",
+      "BasePath": "_content/AIResumeAnalyzerSystem.API",
+      "RelativePath": "uploads/2dd902a1-b581-4ea5-82cd-e63d44b5d50a_Saad-Akhtar-Qadri-FlowCV-Resume-20251014 (1) (5).pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\2dd902a1-b581-4ea5-82cd-e63d44b5d50a_Saad-Akhtar-Qadri-FlowCV-Resume-20251014 (1) (5).pdf"
     },
     {
       "Identity": "Q:\\Programming Courses and Training\\Code\\AIResumeAnalyzerSystem\\AIResumeAnalyzerSystem.API\\wwwroot\\uploads\\2e6a726f-f2df-4149-9dd8-b9837795e373_Saad_Akhtar_Qadri_FlowCV_Resume_2026-04-14.pdf",
