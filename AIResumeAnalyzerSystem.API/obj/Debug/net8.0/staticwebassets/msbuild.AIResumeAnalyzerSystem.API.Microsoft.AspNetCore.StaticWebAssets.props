@@ -240,6 +240,38 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\515a91e4-8ecf-4bbb-87e8-2f5ff17b68cd_Saad-Akhtar-Qadri-FlowCV-Resume-20251014 (1) (5).pdf))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\5358aeed-0c57-4715-a768-d43b62649873_Saad_Akhtar_Qadri_FlowCV_Resume_2026-04-14.pdf))">
+      <SourceType>Package</SourceType>
+      <SourceId>AIResumeAnalyzerSystem.API</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/AIResumeAnalyzerSystem.API</BasePath>
+      <RelativePath>uploads/5358aeed-0c57-4715-a768-d43b62649873_Saad_Akhtar_Qadri_FlowCV_Resume_2026-04-14.pdf</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\5358aeed-0c57-4715-a768-d43b62649873_Saad_Akhtar_Qadri_FlowCV_Resume_2026-04-14.pdf))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\6a8d2df2-98b0-40dd-9fab-ea295033a7a1_AI_Resume_Analyzer_API_Documentation_Updated.pdf))">
+      <SourceType>Package</SourceType>
+      <SourceId>AIResumeAnalyzerSystem.API</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/AIResumeAnalyzerSystem.API</BasePath>
+      <RelativePath>uploads/6a8d2df2-98b0-40dd-9fab-ea295033a7a1_AI_Resume_Analyzer_API_Documentation_Updated.pdf</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\6a8d2df2-98b0-40dd-9fab-ea295033a7a1_AI_Resume_Analyzer_API_Documentation_Updated.pdf))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\6b458877-87d4-4190-804f-78d15c9b1c41_teacher_resume.pdf))">
       <SourceType>Package</SourceType>
       <SourceId>AIResumeAnalyzerSystem.API</SourceId>
@@ -319,6 +351,22 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\87445d28-5787-4f33-9360-e19090776014_teacher_resume.pdf))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\8b23d619-a37a-40fd-9f73-767ee925d43a_Saad_Akhtar_Qadri_FlowCV_Resume_2026-04-14.pdf))">
+      <SourceType>Package</SourceType>
+      <SourceId>AIResumeAnalyzerSystem.API</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/AIResumeAnalyzerSystem.API</BasePath>
+      <RelativePath>uploads/8b23d619-a37a-40fd-9f73-767ee925d43a_Saad_Akhtar_Qadri_FlowCV_Resume_2026-04-14.pdf</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\8b23d619-a37a-40fd-9f73-767ee925d43a_Saad_Akhtar_Qadri_FlowCV_Resume_2026-04-14.pdf))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\93cf0174-1308-4ad9-94aa-56a22f01ed7a_teacher_resume.pdf))">
       <SourceType>Package</SourceType>

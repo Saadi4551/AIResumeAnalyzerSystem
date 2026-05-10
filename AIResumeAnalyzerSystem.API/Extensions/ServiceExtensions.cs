@@ -4,7 +4,6 @@ using AIResumeAnalyzerSystem.Infrastructure.Data;
 using AIResumeAnalyzerSystem.Infrastructure.Repositories;
 using AIResumeAnalyzerSystem.Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
-using Npgsql.EntityFrameworkCore.PostgreSQL;
 
 namespace AIResumeAnalyzerSystem.API.Extensions;
 
@@ -14,17 +13,17 @@ public static class ServiceExtensions
         this IServiceCollection services,
         IConfiguration configuration)
     {
-        // Database
+        // ✅ PostgreSQL Database (Neon in production, local in dev)
         services.AddDbContext<AppDbContext>(options =>
             options.UseNpgsql(
                 configuration.GetConnectionString("DefaultConnection"),
                 x => x.MigrationsAssembly("AIResumeAnalyzerSystem.Infrastructure")));
 
-        // Repositories
+        // ✅ Repository registrations
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IResumeRepository, ResumeRepository>();
 
-        // Services
+        // ✅ Service registrations
         services.AddScoped<IAuthService, AuthService>();
         services.AddScoped<IResumeService, ResumeService>();
 
@@ -39,13 +38,19 @@ public static class ServiceExtensions
             {
                 policy
                     .WithOrigins(
+                        // ✅ Production frontend on Render
                         "https://ai-resume-plcw.onrender.com",
+                        // ✅ Local development (React default ports)
                         "http://localhost:3000",
-                        "http://localhost:5173"
+                        "http://localhost:5173",
+                        "https://localhost:3000",
+                        "https://localhost:5173"
                     )
                     .AllowAnyMethod()
                     .AllowAnyHeader()
-                    .AllowCredentials(); // ✅ Required for cookies
+                    // ✅ CRITICAL: Required for cookies to work cross-origin
+                    // Without this, browser will not send/receive cookies
+                    .AllowCredentials();
             });
         });
         return services;

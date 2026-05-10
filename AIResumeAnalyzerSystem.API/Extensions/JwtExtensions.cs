@@ -14,36 +14,51 @@ public static class JwtExtensions
         var secret = jwtSettings["Secret"]!;
 
         services.AddAuthentication(options =>
+        {
+            options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+            options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+        })
+        .AddJwtBearer(options =>
+        {
+            options.TokenValidationParameters = new TokenValidationParameters
             {
-                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            })
-            .AddJwtBearer(options =>
-            {
-                options.TokenValidationParameters = new TokenValidationParameters
-                {
-                    ValidateIssuer = true,
-                    ValidateAudience = true,
-                    ValidateLifetime = true,
-                    ValidateIssuerSigningKey = true,
-                    ValidIssuer = jwtSettings["Issuer"],
-                    ValidAudience = jwtSettings["Audience"],
-                    IssuerSigningKey = new SymmetricSecurityKey(
-                        Encoding.UTF8.GetBytes(secret))
-                };
+                ValidateIssuer = true,
+                ValidateAudience = true,
+                ValidateLifetime = true,
+                ValidateIssuerSigningKey = true,
+                ValidIssuer = jwtSettings["Issuer"],
+                ValidAudience = jwtSettings["Audience"],
+                IssuerSigningKey = new SymmetricSecurityKey(
+                    Encoding.UTF8.GetBytes(secret))
+            };
 
-                // ✅ Read token from Cookie
-                options.Events = new JwtBearerEvents
+            // ✅ Read JWT token from HttpOnly Cookie named "jwt"
+            // This replaces the Bearer token from Authorization header
+            // Frontend does NOT need to send Authorization header
+            // Cookie is automatically sent with every request
+            options.Events = new JwtBearerEvents
+            {
+                OnMessageReceived = context =>
                 {
-                    OnMessageReceived = context =>
+                    // First try cookie (primary method - secure)
+                    var cookieToken = context.Request.Cookies["jwt"];
+                    if (!string.IsNullOrEmpty(cookieToken))
                     {
-                        var token = context.Request.Cookies["jwt"];
-                        if (!string.IsNullOrEmpty(token))
-                            context.Token = token;
+                        context.Token = cookieToken;
                         return Task.CompletedTask;
                     }
-                };
-            });
+
+                    // Fallback: try Authorization header (for Swagger testing only)
+                    var authHeader = context.Request.Headers["Authorization"].ToString();
+                    if (authHeader.StartsWith("Bearer "))
+                    {
+                        context.Token = authHeader.Substring("Bearer ".Length).Trim();
+                    }
+
+                    return Task.CompletedTask;
+                }
+            };
+        });
 
         return services;
     }
