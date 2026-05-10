@@ -20,6 +20,8 @@ public class AuthController : ControllerBase
     public async Task<IActionResult> Register([FromBody] RegisterDto dto)
     {
         var result = await _authService.RegisterAsync(dto);
+        SetTokenCookie(result.Token);
+        result.Token = null;
         return Ok(ApiResponse<AuthResponseDto>.Ok(result, "Registered successfully."));
     }
 
@@ -27,6 +29,27 @@ public class AuthController : ControllerBase
     public async Task<IActionResult> Login([FromBody] LoginDto dto)
     {
         var result = await _authService.LoginAsync(dto);
+        SetTokenCookie(result.Token);
+        result.Token = null;
         return Ok(ApiResponse<AuthResponseDto>.Ok(result, "Login successful."));
+    }
+
+    [HttpPost("logout")]
+    public IActionResult Logout()
+    {
+        Response.Cookies.Delete("jwt");
+        return Ok(ApiResponse<string>.Ok("Logged out", "Logout successful."));
+    }
+
+    private void SetTokenCookie(string token)
+    {
+        var cookieOptions = new CookieOptions
+        {
+            HttpOnly = true,
+            Secure = true,
+            SameSite = SameSiteMode.None,
+            Expires = DateTime.UtcNow.AddDays(7)
+        };
+        Response.Cookies.Append("jwt", token, cookieOptions);
     }
 }

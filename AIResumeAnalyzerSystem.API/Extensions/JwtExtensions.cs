@@ -31,6 +31,18 @@ public static class JwtExtensions
                     IssuerSigningKey = new SymmetricSecurityKey(
                         Encoding.UTF8.GetBytes(secret))
                 };
+
+                // ✅ Read token from Cookie
+                options.Events = new JwtBearerEvents
+                {
+                    OnMessageReceived = context =>
+                    {
+                        var token = context.Request.Cookies["jwt"];
+                        if (!string.IsNullOrEmpty(token))
+                            context.Token = token;
+                        return Task.CompletedTask;
+                    }
+                };
             });
 
         return services;

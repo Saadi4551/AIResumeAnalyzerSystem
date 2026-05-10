@@ -37,9 +37,15 @@ public static class ServiceExtensions
         {
             options.AddPolicy("AllowAll", policy =>
             {
-                policy.AllowAnyOrigin()
+                policy
+                    .WithOrigins(
+                        "https://ai-resume-plcw.onrender.com",
+                        "http://localhost:3000",
+                        "http://localhost:5173"
+                    )
                     .AllowAnyMethod()
-                    .AllowAnyHeader();
+                    .AllowAnyHeader()
+                    .AllowCredentials(); // ✅ Required for cookies
             });
         });
         return services;
