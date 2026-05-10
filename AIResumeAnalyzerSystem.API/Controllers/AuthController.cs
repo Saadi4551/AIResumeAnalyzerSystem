@@ -43,10 +43,19 @@ public class AuthController : ControllerBase
     [HttpPost("logout")]
     public IActionResult Logout()
     {
-        Response.Cookies.Delete("jwt");
+        var isProduction = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Production";
+
+        // ✅ Properly delete cookie cross-origin by setting past expiry
+        Response.Cookies.Append("jwt", "", new CookieOptions
+        {
+            HttpOnly = true,
+            Secure = isProduction,
+            SameSite = isProduction ? SameSiteMode.None : SameSiteMode.Lax,
+            Expires = DateTime.UtcNow.AddDays(-1)
+        });
+
         return Ok(ApiResponse<string>.Ok("Logged out", "Logout successful."));
     }
-
     // ✅ Only logged-in users - requires valid JWT cookie
     [Authorize]
     [HttpGet("me")]
