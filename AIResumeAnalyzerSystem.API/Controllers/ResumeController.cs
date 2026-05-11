@@ -39,12 +39,14 @@ public class ResumeController : ControllerBase
         // ✅ Save file to wwwroot/uploads
         var uploadsFolder = Path.Combine(_environment.WebRootPath ?? "wwwroot", "uploads");
         Directory.CreateDirectory(uploadsFolder);
-        var filePath = Path.Combine(uploadsFolder, $"{Guid.NewGuid()}_{file.FileName}");
+        var uniqueFileName = $"{Guid.NewGuid()}_{Path.GetFileName(file.FileName)}";
+
+        var filePath = Path.Combine(uploadsFolder, uniqueFileName);
 
         using (var stream = new FileStream(filePath, FileMode.Create))
             await file.CopyToAsync(stream);
 
-        var result = await _resumeService.UploadResumeAsync(userId, file.FileName, filePath);
+        var result = await _resumeService.UploadResumeAsync(userId, uniqueFileName, filePath);
         return Ok(ApiResponse<ResumeResponseDto>.Ok(result, "Resume uploaded successfully."));
     }
 

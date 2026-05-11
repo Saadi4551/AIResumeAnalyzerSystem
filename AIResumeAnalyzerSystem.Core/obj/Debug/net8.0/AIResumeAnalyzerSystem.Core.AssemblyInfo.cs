@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AIResumeAnalyzerSystem.Core")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+70037027f892439cf97e0c311f9ce73b045518a1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2efdbb45150b0d1e6d2104c6007352b576aa5eea")]
 [assembly: System.Reflection.AssemblyProductAttribute("AIResumeAnalyzerSystem.Core")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AIResumeAnalyzerSystem.Core")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -52,8 +52,27 @@ public class ResumeRepository : IResumeRepository
 
     public async Task<ResumeAnalysis> SaveAnalysisAsync(ResumeAnalysis analysis)
     {
+        var existingAnalysis = await _context.ResumeAnalyses
+            .FirstOrDefaultAsync(x => x.ResumeId == analysis.ResumeId);
+
+        if (existingAnalysis != null)
+        {
+            existingAnalysis.OverallScore = analysis.OverallScore;
+            existingAnalysis.Strengths = analysis.Strengths;
+            existingAnalysis.Weaknesses = analysis.Weaknesses;
+            existingAnalysis.Suggestions = analysis.Suggestions;
+            existingAnalysis.SkillsFound = analysis.SkillsFound;
+            existingAnalysis.JobTitleSuggestions = analysis.JobTitleSuggestions;
+            existingAnalysis.AIFeedback = analysis.AIFeedback;
+
+            await _context.SaveChangesAsync();
+
+            return existingAnalysis;
+        }
+
         _context.ResumeAnalyses.Add(analysis);
         await _context.SaveChangesAsync();
+
         return analysis;
     }
 }

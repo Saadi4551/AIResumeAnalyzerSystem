@@ -71,7 +71,16 @@ public class ResumeService : IResumeService
             throw new Exception("Failed to extract text from resume.");
 
         // ✅ Step 4: Send to Gemini AI
-        var aiResponse = await _geminiService.AnalyzeResumeTextAsync(resumeText);
+        string aiResponse;
+
+        try
+        {
+            aiResponse = await _geminiService.AnalyzeResumeTextAsync(resumeText);
+        }
+        catch (Exception ex)
+        {
+            throw new Exception($"Gemini AI Error: {ex.Message}");
+        }
 
         // ✅ Step 5: Clean JSON
         aiResponse = CleanJson(aiResponse);
